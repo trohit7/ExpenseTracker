@@ -1,4 +1,4 @@
-package com.example.expense_tracker.dto.User;
+package com.example.expense_tracker.dto.user;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

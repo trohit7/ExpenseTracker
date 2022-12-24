@@ -1,4 +1,4 @@
-package com.example.expense_tracker.dto.User;
+package com.example.expense_tracker.dto.user;
 
 import com.example.expense_tracker.enums.Role;
 import lombok.Data;

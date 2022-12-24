@@ -1,11 +1,21 @@
-package com.example.expense_tracker.dto.User;
+package com.example.expense_tracker.dto.user;
 
-public class SignUpDto {
+import lombok.AllArgsConstructor;
+
+
+
+@AllArgsConstructor
+
+public class SignupDto {
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+
+    public SignupDto() {
+
+    }
 
     public String getFirstName() {
         return firstName;
@@ -38,5 +48,6 @@ public class SignUpDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 }

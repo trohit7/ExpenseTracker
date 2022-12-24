@@ -1,8 +1,10 @@
 package com.example.expense_tracker.service;
 
 import com.example.expense_tracker.config.MessageStrings;
+import com.example.expense_tracker.controller.UserController;
+import com.example.expense_tracker.dto.email.MessageResponse;
 import com.example.expense_tracker.dto.ResponseDto;
-import com.example.expense_tracker.dto.User.*;
+import com.example.expense_tracker.dto.user.*;
 import com.example.expense_tracker.enums.ResponseStatus;
 import com.example.expense_tracker.enums.Role;
 import com.example.expense_tracker.exceptions.AuthenticationFailException;
@@ -17,33 +19,28 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import javax.transaction.Transactional;
 import javax.xml.bind.DatatypeConverter;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDateTime;
-import java.util.UUID;
+
 
 import static com.example.expense_tracker.config.MessageStrings.USER_CREATED;
 
 @Slf4j
 @Service
 public class UserService {
+    @Autowired
+    UserRepository userRepository;
 
-
+    Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     AuthenticationService authenticationService;
 
 
-    @Autowired
-    UserRepository userRepository;
-
-
-    Logger logger = LoggerFactory.getLogger(UserService.class);
-
     @Transactional
-    public ResponseDto signUp(SignUpDto signupDto){
+    public ResponseDto signUp(SignupDto signupDto) throws RuntimeException, NoSuchAlgorithmException {
         // check if the user is already  present
         if (Helper.notNull(userRepository.findByEmail(signupDto.getEmail()))){
             //if we have the user already present then we will handle with Exceptions
@@ -51,34 +48,18 @@ public class UserService {
         }
         // hash(encrypting) the password
 
-        String encryptedpassword = signupDto.getPassword();
 
-        try {
-            encryptedpassword = hashPassword(signupDto.getPassword());
+        String encryptedpassword = hashPassword(signupDto.getPassword());
 
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+
         // create a new user
         User user = new User(signupDto.getFirstName(),signupDto.getLastName(),signupDto.getEmail(),encryptedpassword);
         userRepository.save(user);
         // save the user with encrypted password
         // now create the token for new user
-        String token = UUID.randomUUID().toString();
-         AuthenticationToken authenticationToken =  new AuthenticationToken(
-
-                 token,
-                 LocalDateTime.now(),
-                 LocalDateTime.now().plusMinutes(15),
-                 user
-
-        );
+        final AuthenticationToken authenticationToken =  new AuthenticationToken(user);
         authenticationService.saveConfirmationToken(authenticationToken);
-
-        //sendVerficationEmail()
-
-        ResponseDto responseDto = new ResponseDto("success","new user is signedup");
-        return responseDto;
+        return new ResponseDto("success","new user is signedup");
 
     }
 
@@ -86,8 +67,7 @@ public class UserService {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         byte[] digest = md.digest();
-        String hash = DatatypeConverter.printHexBinary(digest).toUpperCase();
-        return hash;
+        return DatatypeConverter.printHexBinary(digest).toUpperCase();
 
     }
 
@@ -126,27 +106,18 @@ public class UserService {
 
 
     boolean canCrudUser(Role role) {
-        if (role == Role.admin || role == Role.manager) {
-            return true;
-        }
-        return false;
+        return role == Role.ADMIN || role == Role.USER;
     }
 
-    boolean canCrudUser(User userUpdating, Integer userIdBeingUpdated) {
+    boolean canCrudUser(User userUpdating) {
         Role role = userUpdating.getRole();
         // admin and manager can crud any user
-        if (role == Role.admin || role == Role.manager) {
-            return true;
-        }
+        return role == Role.ADMIN || role == Role.USER;
         // user can update his own record, but not his role
-        if (role == Role.user && userUpdating.getId() == userIdBeingUpdated) {
-            return true;
-        }
-        return false;
     }
 
 
-    public ResponseDto createUser(String token, UserCreateDto userCreateDto) throws  CustomException, AuthenticationFailException {
+    public ResponseDto createUser(String token, UserCreateDto userCreateDto) throws IllegalArgumentException {
         User creatingUser = authenticationService.getUser(token);
         if(!canCrudUser(creatingUser.getRole())) {
             // user can't create new user
@@ -166,11 +137,38 @@ public class UserService {
             createdUser = userRepository.save(user);
             final AuthenticationToken authenticationToken = new AuthenticationToken(createdUser);
             authenticationService.saveConfirmationToken(authenticationToken);
-            return new ResponseDto(ResponseStatus.success.toString(), USER_CREATED);
+            return new ResponseDto(ResponseStatus.SUCCESS.toString(), USER_CREATED);
 
         } catch (Exception e) {
             throw new CustomException(e.getMessage());
         }
+
+
+
+    }
+
+
+    public MessageResponse updatePassword(UpdatePassword updatePassword) throws NoSuchAlgorithmException {
+
+        User user = userRepository.findByEmail(updatePassword.getEmailID());
+        if(!Helper.notNull(user)){
+            throw new AuthenticationFailException("User is not valid");
+        }
+        // if User found, hash the password and match with the encrypted password which was stored in the db
+
+
+        User updateUserPassword=userRepository.findByEmail(updatePassword.getEmailID());
+
+        updateUserPassword.setPassword(hashPassword((updatePassword.getNewPassword())));
+
+
+
+        logger.info("password is updated");
+
+        userRepository.save(updateUserPassword);
+
+        return new MessageResponse("updated new password ");
+
 
 
 

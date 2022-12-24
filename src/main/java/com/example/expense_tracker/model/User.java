@@ -1,17 +1,21 @@
 package com.example.expense_tracker.model;
 
 import com.example.expense_tracker.enums.Role;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import javax.persistence.*;
-@Entity
 
+import javax.persistence.*;
+
+@Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
-public class User {
+public class User   {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,12 +29,16 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-    private String password;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
+
+    @Column(name = "password")
+    private String password;
+
+    private String userOtp;
+
+
 
 
     public User(String firstName, String lastName, String email, String password) {
@@ -40,14 +48,15 @@ public class User {
         this.password = password;
     }
 
-    public User(String firstName, String firstName1, String email, Role role, String encryptedPassword) {
+    public User(String firstName, String lastName, String email, Role role, String encryptedPassword) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.role = role;
-        this.password = password;
+        this.password = encryptedPassword;
 
     }
+
 
 
 }

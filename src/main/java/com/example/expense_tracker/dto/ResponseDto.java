@@ -1,10 +1,12 @@
 package com.example.expense_tracker.dto;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+
 public class ResponseDto {
 
     private String status;
