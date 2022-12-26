@@ -23,6 +23,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
@@ -154,6 +157,13 @@ public class UserController {
     @PostMapping("/api/auth/updatePassword")
     public MessageResponse updatePassword(@RequestBody UpdatePassword updatePassword) throws NoSuchAlgorithmException {
         return userService.updatePassword(updatePassword);
+    }
+
+
+    @PostMapping("/api/auth/signout")
+    public ResponseEntity<?> logoutUser() {
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE)
+                .body(new MessageResponse("You've been signed out!"));
     }
 
 }

@@ -12,6 +12,7 @@ com/example/expense_tracker/dto/user/SignInDto.class
 com/example/expense_tracker/service/AuthenticationService.class
 com/example/expense_tracker/dto/email/MessageResponse.class
 com/example/expense_tracker/config/DatabaseConfig.class
+com/example/expense_tracker/controller/UserProfileController.class
 com/example/expense_tracker/enums/Role.class
 com/example/expense_tracker/dto/category/CategoryDto.class
 com/example/expense_tracker/dto/user/SignInResponseDto.class
@@ -24,7 +25,6 @@ com/example/expense_tracker/utlis/Helper.class
 com/example/expense_tracker/config/documentation/SwaggerConfig.class
 com/example/expense_tracker/controller/CategoryController.class
 com/example/expense_tracker/config/StorageProperties.class
-com/example/expense_tracker/exceptions/ValidationException.class
 com/example/expense_tracker/dto/email/OtpRequest.class
 com/example/expense_tracker/config/security/MvcConfig.class
 com/example/expense_tracker/service/UserService.class
@@ -33,7 +33,6 @@ com/example/expense_tracker/service/ExpenseService.class
 com/example/expense_tracker/model/User.class
 com/example/expense_tracker/dto/ResponseDto.class
 com/example/expense_tracker/ExpenseTrackerApplication.class
-com/example/expense_tracker/exceptions/ObjectNotFoundException.class
 com/example/expense_tracker/dto/email/EmailDetails.class
 com/example/expense_tracker/config/WebConfig$1.class
 com/example/expense_tracker/repository/UserRepository.class
@@ -47,7 +46,6 @@ com/example/expense_tracker/repository/CategoryRepository.class
 com/example/expense_tracker/repository/TokenRepository.class
 com/example/expense_tracker/exceptions/AuthenticationFailException.class
 com/example/expense_tracker/common/PagedList.class
-com/example/expense_tracker/exceptions/UpdateFailException.class
 com/example/expense_tracker/dto/user/UpdatePassword.class
 com/example/expense_tracker/model/Expense.class
 com/example/expense_tracker/exceptions/CustomException.class

@@ -151,7 +151,7 @@ public class UserService {
     public MessageResponse updatePassword(UpdatePassword updatePassword) throws NoSuchAlgorithmException {
 
         User user = userRepository.findByEmail(updatePassword.getEmailID());
-        if(!Helper.notNull(user)){
+        if(Helper.notNull(user)){
             throw new AuthenticationFailException("User is not valid");
         }
         // if User found, hash the password and match with the encrypted password which was stored in the db

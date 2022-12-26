@@ -3,10 +3,8 @@
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/config/MessageStrings.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/service/UserProfileService.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/service/AuthenticationService.java
-/home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/UpdateFailException.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/model/Category.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/repository/UserRepository.java
-/home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/ValidationException.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/config/documentation/SwaggerConfig.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/CustomException.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/ExceptionControllerAdvice.java
@@ -27,6 +25,7 @@
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/dto/email/OtpRequest.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/dto/email/EmailRequest.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/model/Role.java
+/home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/controller/UserProfileController.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/model/AuthenticationToken.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/ServletInitializer.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/enums/ResponseStatus.java
@@ -36,7 +35,6 @@
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/common/ApiResponse.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/model/Expense.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/ExpenseTrackerApplication.java
-/home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/ObjectNotFoundException.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/dto/email/MessageResponse.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/config/security/SecurityConfig.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/AuthenticationFailException.java
