@@ -1,6 +1,7 @@
 package com.example.expense_tracker.controller;
 
 import com.example.expense_tracker.common.ApiResponse;
+import com.example.expense_tracker.dto.user.UserPro;
 import com.example.expense_tracker.model.UserProfile;
 import com.example.expense_tracker.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,9 @@ public class UserProfileController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<ApiResponse> addSurvey(@RequestBody @Valid UserProfile userProfile) {
-        userProfileService.addProfile(userProfile);
+    public ResponseEntity<ApiResponse> addSurvey(@RequestBody @Valid UserPro userPro) {
+        userProfileService.addProfile(userPro);
         return new ResponseEntity<>(new ApiResponse(true, "Profile has been created."), HttpStatus.CREATED);
     }
 }
+
