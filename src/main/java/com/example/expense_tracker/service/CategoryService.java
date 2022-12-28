@@ -17,9 +17,6 @@ public class CategoryService {
 
 
 
-//    public void addCategory(CategoryDto categoryDto){
-//        categoryDto = categoryRepository.save(categoryDto);
-//    }
 
 
     public List<Category> getCategory(){

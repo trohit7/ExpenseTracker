@@ -24,6 +24,7 @@ com/example/expense_tracker/exceptions/ExceptionControllerAdvice.class
 com/example/expense_tracker/utlis/Helper.class
 com/example/expense_tracker/config/documentation/SwaggerConfig.class
 com/example/expense_tracker/controller/CategoryController.class
+com/example/expense_tracker/service/GMail.class
 com/example/expense_tracker/config/StorageProperties.class
 com/example/expense_tracker/dto/email/OtpRequest.class
 com/example/expense_tracker/config/security/MvcConfig.class

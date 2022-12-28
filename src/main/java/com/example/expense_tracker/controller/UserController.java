@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -94,7 +94,7 @@ public class UserController {
             throw new CustomException("user is not present ");
         }
 
-        logger.info("Email is",emailRequest.getEmailId());
+        logger.info("Email is");
 
 
 

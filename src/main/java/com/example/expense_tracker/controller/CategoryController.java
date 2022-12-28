@@ -23,11 +23,7 @@ public class CategoryController {
 
 
 
-//    @PostMapping("addCategory")
-//    public MessageResponse addCategory(@RequestBody CategoryDto categoryDto){
-//        categoryRepository.save(categoryDto.getCategoryName());
-//        return  new MessageResponse("new category added");
-//    }
+
 
 
 

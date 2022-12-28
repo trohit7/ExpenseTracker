@@ -40,7 +40,7 @@ public class UserService {
 
 
     @Transactional
-    public ResponseDto signUp(SignupDto signupDto) throws RuntimeException, NoSuchAlgorithmException {
+    public ResponseDto signUp(SignupDto signupDto) throws  NoSuchAlgorithmException {
         // check if the user is already  present
         if (Helper.notNull(userRepository.findByEmail(signupDto.getEmail()))){
             //if we have the user already present then we will handle with Exceptions

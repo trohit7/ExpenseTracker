@@ -7,6 +7,7 @@
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/repository/UserRepository.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/config/documentation/SwaggerConfig.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/CustomException.java
+/home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/service/GMail.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/exceptions/ExceptionControllerAdvice.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/dto/user/SignInResponseDto.java
 /home/rohit/IdeaProjects/Expense Tracker/src/main/java/com/example/expense_tracker/controller/CategoryController.java
